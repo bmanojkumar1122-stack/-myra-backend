@@ -4,20 +4,13 @@ from datetime import datetime
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-
-# ========== ADD THIS SECTION FOR .env ==========
 from dotenv import load_dotenv
+
 load_dotenv()
 
-# API keys from .env
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-WEATHER_API_KEY = os.getenv("WEATHER_API_KEY", "")
-NEWS_API_KEY = os.getenv("NEWS_API_KEY", "")
 
 print(f"✅ GEMINI_API_KEY loaded: {bool(GEMINI_API_KEY)}")
-print(f"✅ WEATHER_API_KEY loaded: {bool(WEATHER_API_KEY)}")
-print(f"✅ NEWS_API_KEY loaded: {bool(NEWS_API_KEY)}")
-# ==============================================
 
 app = FastAPI()
 
@@ -48,17 +41,12 @@ async def websocket_endpoint(websocket: WebSocket):
     print(f"✅ Mobile client {client_id} connected")
     
     try:
-        await websocket.send_text(json.dumps({
-            "type": "welcome",
-            "content": "Hello! I'm Myra AI. How can I help you?",
-            "timestamp": datetime.now().isoformat()
-        }))
-        
         while True:
             data = await websocket.receive_text()
             print(f"📝 From mobile: {data}")
             
-            response = await process_command(data)
+            # Simple response logic
+            response = get_response(data)
             
             await websocket.send_text(json.dumps({
                 "type": "response",
@@ -71,46 +59,46 @@ async def websocket_endpoint(websocket: WebSocket):
     finally:
         connected_clients.discard(websocket)
 
-# ========== UPDATED process_command with async ==========
-async def process_command(text: str) -> str:
-    import aiohttp
-    text_lower = text.lower()
+def get_response(text: str) -> str:
+    """Simple response function - no async complications"""
+    text_lower = text.lower().strip()
+    
+    print(f"Processing: {text_lower}")
     
     # Time
     if "time" in text_lower:
         return f"Current time is {datetime.now().strftime('%I:%M %p')}"
     
     # Date
-    elif "date" in text_lower:
+    if "date" in text_lower:
         return f"Today is {datetime.now().strftime('%B %d, %Y')}"
     
-    # Weather (disabled - no API key)
-    elif "weather" in text_lower:
-        return "Weather feature is currently disabled. Please add WEATHER_API_KEY to enable."
-    
     # Hello
-    elif any(word in text_lower for word in ["hello", "hi", "namaste"]):
+    if "hello" in text_lower or "hi" in text_lower:
         return "Hello! Namaste! How can I help you today?"
     
     # How are you
-    elif "how are you" in text_lower:
+    if "how are you" in text_lower:
         return "I'm doing great! Thanks for asking!"
     
     # Name
-    elif "your name" in text_lower or "who are you" in text_lower:
+    if "your name" in text_lower or "who are you" in text_lower:
         return "I'm Myra AI, your voice assistant!"
     
     # Bye
-    elif "bye" in text_lower or "goodbye" in text_lower:
+    if "bye" in text_lower or "goodbye" in text_lower:
         return "Goodbye! Have a wonderful day!"
     
-    # Help
-    elif "help" in text_lower:
-        return "I can tell you time, date, have conversations, and answer your questions!"
+    # Thank you
+    if "thank" in text_lower:
+        return "You're welcome! Happy to help!"
     
-    # Default
-    else:
-        return f"I heard: '{text}'. How can I help you?"
+    # Help
+    if "help" in text_lower:
+        return "I can tell you time, date, have conversations, and answer questions! Try saying 'hello', 'what is the time?', or 'how are you?'"
+    
+    # Default response for everything else
+    return f"I heard: '{text}'. How can I help you?"
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
