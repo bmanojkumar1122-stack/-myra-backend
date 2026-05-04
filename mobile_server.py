@@ -84,21 +84,9 @@ async def process_command(text: str) -> str:
     elif "date" in text_lower:
         return f"Today is {datetime.now().strftime('%B %d, %Y')}"
     
-    # Weather with API key
+    # Weather (disabled - no API key)
     elif "weather" in text_lower:
-        if WEATHER_API_KEY:
-            city = extract_city(text) or "Delhi"
-            url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric"
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url) as resp:
-                    if resp.status == 200:
-                        data = await resp.json()
-                        temp = data['main']['temp']
-                        condition = data['weather'][0]['description']
-                        return f"Temperature in {city} is {temp}°C with {condition}"
-                    else:
-                        return f"Could not fetch weather for {city}"
-        return "Weather feature needs API key. Please check .env file"
+        return "Weather feature is currently disabled. Please add WEATHER_API_KEY to enable."
     
     # Hello
     elif any(word in text_lower for word in ["hello", "hi", "namaste"]):
@@ -118,18 +106,11 @@ async def process_command(text: str) -> str:
     
     # Help
     elif "help" in text_lower:
-        return "I can tell you time, date, weather, have conversations, and answer your questions!"
+        return "I can tell you time, date, have conversations, and answer your questions!"
     
     # Default
     else:
         return f"I heard: '{text}'. How can I help you?"
-
-def extract_city(text: str) -> str:
-    words = text.split()
-    for i, word in enumerate(words):
-        if word == "weather" and i + 1 < len(words):
-            return words[i + 1]
-    return None
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
