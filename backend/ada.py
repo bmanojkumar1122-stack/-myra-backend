@@ -45,6 +45,46 @@ DEFAULT_MODE = "camera"
 load_dotenv()
 client = genai.Client(http_options={"api_version": "v1beta"}, api_key=os.getenv("GEMINI_API_KEY"))
 
+from fastapi import FastAPI
+from pydantic import BaseModel
+import uvicorn
+
+# ================= FASTAPI =================
+
+app = FastAPI()
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.get("/")
+async def root():
+    return {
+        "status": "MYRA Backend Running"
+    }
+
+@app.get("/health")
+async def health():
+    return {
+        "status": "OK"
+    }
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=req.message
+        )
+
+        return {
+            "reply": response.text
+        }
+
+    except Exception as e:
+        return {
+            "error": str(e)
+        }
 # ========== TOOL: Get Current Time in IST ==========
 get_current_time_tool = {
     "name": "get_current_time",
@@ -841,8 +881,19 @@ def get_output_devices():
 
 
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", type=str, default=DEFAULT_MODE, choices=["camera", "screen", "none"])
+    parser.add_argument("--mode", type=str, default=DEFAULT_MODE,
+                        choices=["camera", "screen", "none"])
+    parser.add_argument("--api", action="store_true")
+
     args = parser.parse_args()
-    main = AudioLoop(video_mode=args.mode)
-    asyncio.run(main.run())
+
+    # Run FastAPI Server
+    if args.api:
+        uvicorn.run(app, host="0.0.0.0", port=10000)
+
+    # Run Voice Assistant
+    else:
+        main = AudioLoop(video_mode=args.mode)
+        asyncio.run(main.run())
