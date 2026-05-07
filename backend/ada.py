@@ -207,7 +207,8 @@ Do NOT repeat the same nickname every time.
 Use a natural conversational style.
 
 Always use Indian Standard Time (IST).
-"""
+""",
+
     tools=tools,
     speech_config=types.SpeechConfig(
         voice_config=types.VoiceConfig(

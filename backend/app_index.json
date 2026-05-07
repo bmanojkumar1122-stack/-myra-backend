@@ -4837,20 +4837,20 @@
   },
   "rg": {
     "name": "rg",
-    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\resources\\app\\extensions\\copilot\\node_modules\\@github\\copilot\\sdk\\ripgrep\\bin\\win32-x64\\rg.exe",
-    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\resources\\app\\extensions\\copilot\\node_modules\\@github\\copilot\\sdk\\ripgrep\\bin\\win32-x64\\rg.exe",
+    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\resources\\app\\extensions\\copilot\\node_modules\\@github\\copilot\\sdk\\ripgrep\\bin\\win32-x64\\rg.exe",
+    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\resources\\app\\extensions\\copilot\\node_modules\\@github\\copilot\\sdk\\ripgrep\\bin\\win32-x64\\rg.exe",
     "type": "executable"
   },
   "vsce-sign": {
     "name": "vsce-sign",
-    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\resources\\app\\node_modules\\@vscode\\vsce-sign\\bin\\vsce-sign.exe",
-    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\resources\\app\\node_modules\\@vscode\\vsce-sign\\bin\\vsce-sign.exe",
+    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\resources\\app\\node_modules\\@vscode\\vsce-sign\\bin\\vsce-sign.exe",
+    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\resources\\app\\node_modules\\@vscode\\vsce-sign\\bin\\vsce-sign.exe",
     "type": "executable"
   },
   "inno_updater": {
     "name": "inno_updater",
-    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\tools\\inno_updater.exe",
-    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\034f571df5\\tools\\inno_updater.exe",
+    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\tools\\inno_updater.exe",
+    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Microsoft VS Code\\8b640eef5a\\tools\\inno_updater.exe",
     "type": "executable"
   },
   "code-tunnel": {
@@ -5297,10 +5297,10 @@
     "target": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\Rar$EXa5880.20541.rartemp\\scrcpy-win64-v3.3.4\\scrcpy.exe",
     "type": "executable"
   },
-  "codesetup-stable-034f571df509819cc10b0c8129f66ef77a542f0e": {
-    "name": "CodeSetup-stable-034f571df509819cc10b0c8129f66ef77a542f0e",
-    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\vscode-stable-user-x64\\CodeSetup-stable-034f571df509819cc10b0c8129f66ef77a542f0e.exe",
-    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\vscode-stable-user-x64\\CodeSetup-stable-034f571df509819cc10b0c8129f66ef77a542f0e.exe",
+  "codesetup-stable-8b640eef5a6c6089c029249d48efa5c99adf7d51": {
+    "name": "CodeSetup-stable-8b640eef5a6c6089c029249d48efa5c99adf7d51",
+    "path": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\vscode-stable-user-x64\\CodeSetup-stable-8b640eef5a6c6089c029249d48efa5c99adf7d51.exe",
+    "target": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\vscode-stable-user-x64\\CodeSetup-stable-8b640eef5a6c6089c029249d48efa5c99adf7d51.exe",
     "type": "executable"
   },
   "wstoastnotification": {
