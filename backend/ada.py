@@ -885,15 +885,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", type=str, default=DEFAULT_MODE,
                         choices=["camera", "screen", "none"])
-    parser.add_argument("--api", action="store_true")
 
     args = parser.parse_args()
 
-    # Run FastAPI Server
-    if args.api:
+    import threading
+
+    # ================= API SERVER =================
+    def run_api():
         uvicorn.run(app, host="0.0.0.0", port=10000)
 
-    # Run Voice Assistant
-    else:
-        main = AudioLoop(video_mode=args.mode)
-        asyncio.run(main.run())
+    api_thread = threading.Thread(target=run_api)
+    api_thread.daemon = True
+    api_thread.start()
+
+    # ================= MYRA VOICE =================
+    main = AudioLoop(video_mode=args.mode)
+    asyncio.run(main.run())un())
