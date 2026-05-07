@@ -1,0 +1,2289 @@
+# Query: ZOYA
+# ContextLines: 1
+
+605 results - 112 files
+
+CAMERA_DOCUMENTATION_INDEX.md:
+    5  **Your Issue:**
+    6: > "Main camera module se aapko physically nahi dekh sakta... phile MYRA camera se dekh kar sab bata deti to abb kyu nhi baata pa rahi h"
+    7  
+
+  104  
+  105: ### 2. Use with MYRA
+  106  ```
+  107  Voice: "Dekh na camera se"
+  108: MYRA: "Yaha bahot aiyajala h, bohat kuch chal raha h, motion dekh raha hu"
+  109  ```
+
+  120  
+  121: ## 📊 What MYRA Can Do Now
+  122  
+
+  173  ┌─────────────────────────────────────┐
+  174: │   MYRA speaks response              │
+  175  └─────────────────────────────────────┘
+
+  290  
+  291: **Before:** MYRA couldn't see because Tesseract was missing
+  292: **After:** MYRA sees everything via real-time camera vision
+  293  
+  294: **Ab MYRA sab dekh aur samjh sakti h! 🎥✨**
+  295  
+
+CAMERA_FIX_SUMMARY.md:
+    5  **User Issue:** 
+    6: > "Main camera module se aapko physically nahi dekh sakta. Aisa bol raha but phile MYRA camera se dekh kar sab bata deti to abb kyu nhi baata pa rahi h"
+    7  
+    8  **Translation:**
+    9: > "I can't see you physically from the camera module. But before MYRA could see from the camera and describe everything, so why can't she do it now?"
+   10  
+
+   20  - No fallback to actual camera vision
+   21: - MYRA couldn't see the user at all
+   22  
+
+   25  ### What's New:
+   26: Instead of trying to read screen text, MYRA now:
+   27  - 👀 **Sees the environment** via live camera feed
+
+   49      ↓
+   50: MYRA speaks the description
+   51  ```
+
+  127  User: "Dekh na camera se kya dikhta h?"
+  128: MYRA: "Yaha bahot aiyajala h, bohat kuch chal raha h"
+  129  ```
+
+  133  User: "Motion dikhai de raha h?"
+  134: MYRA: "Haan! Motion detected h, kuch na kuo chal raha h"
+  135  ```
+
+  139  User: "Complete dekh aur bata"
+  140: MYRA: "Yaha kaafi bright h, activity bhi h, motion detected h"
+  141  ```
+
+  180      "name": "screen_read",
+  181:     "description": "Capture camera view and describe what MYRA sees...",
+  182      ...
+
+  189      description = scene_analysis.get("description")
+  190:     # MYRA speaks: description
+  191  ```
+
+  286  
+  287: **MYRA can now see and describe everything!**
+  288  
+  289: Ab MYRA:
+  290  - ✅ Camera se dekh sakti h
+
+CAMERA_IMPLEMENTATION_COMPLETE.md:
+    5  Your Issue:
+    6: > "Main camera module se aapko physically nahi dekh sakta. Aisa bol raha but phile MYRA camera se dekh kar sab bata deti to abb kyu nhi baata pa rahi h"
+    7  
+    8  Translation:
+    9: > "I can't physically see you from the camera module. But before MYRA could see from the camera and tell everything, so why can't she tell now?"
+   10  
+
+   15  - The screen_read tool was trying to use Tesseract to read text
+   16: - Without Tesseract, MYRA couldn't see or describe anything
+   17  - The system had no fallback to actual camera vision
+
+   74      ↓
+   75: MYRA receives command
+   76      ↓
+
+   84      ↓
+   85: MYRA speaks the description
+   86  ```
+
+   90  User: "Dekh na camera se kya dikhta h?"
+   91: MYRA: "Yaha bahot aiyajala h, bohat kuch chal raha h, motion dekh raha hu"
+   92  
+   93  User: "Kya motion h?"
+   94: MYRA: "Haan, motion detected h! Kuch na kuo chal raha h"
+   95  
+   96  User: "Room me kaisa h?"
+   97: MYRA: "Normal chamak h, sab shant h, koi movement nahi"
+   98  ```
+
+  140  result = camera.describe_scene()
+  141: print(result['description'])  # MYRA will speak this
+  142  ```
+
+  224  
+  225: **Now MYRA Can:**
+  226  - 👀 See the environment via camera
+
+  231  
+  232: **MYRA ab sab dekh sakti h! 🚀**
+  233  
+  234  Ab jab bhi aap "Dekh" bologe:
+  235: - ✅ MYRA camera se environment dekhegi
+  236  - ✅ Brightness batayegi
+
+  255  
+  256: Ab MYRA camera se sab dekh aur samjh sakti h! 🎥✨
+
+CAMERA_QUICK_START.md:
+    8  | **Problem:** Can't see user through camera | **Solution:** OpenCV-based frame analysis |
+    9: | **Problem:** MYRA couldn't describe environment | **Solution:** Brightness, motion, activity detection |
+   10  
+
+   35  
+   36: ### What MYRA Can Do Now:
+   37  - 👀 See the environment via webcam
+
+  120  - ✅ Camera सीधे काम कर रहा है
+  121: - ✅ MYRA environment देख रही है  
+  122  - ✅ Motion detect कर रही है
+
+  125  
+  126: **Ab MYRA sab dekh sakti h! 🎉**
+
+CAMERA_TESTING_GUIDE.md:
+  32  
+  33: ### 1. Start MYRA Backend
+  34  ```bash
+
+CAMERA_VISION_SYSTEM.md:
+    1: # 🎥 Camera Vision System - MYRA AB DEKH SAKTI H!
+    2  
+    3  ## Problem Solved
+    4: **User Issue:** "Main camera module se aapko physically nahi dekh sakta... but phile MYRA camera se dekh kar sab bata deti to abb kyu nhi baata pa rahi h"
+    5  
+    6: **Translation:** "I can't physically see you from the camera module... but before MYRA could see from the camera and tell everything, so why can't she tell now?"
+    7  
+
+   38      ↓
+   39: Returns to MYRA for voice response
+   40  ```
+
+   76  User: "Dekh na camera se kya dikhta h?"
+   77: MYRA: [Captures frame] "Yaha kaafi bright h aur activity h. Dikhai dey raha hai sab"
+   78  ```
+
+   82  User: "Kya movement dekh rahi ho?"
+   83: MYRA: [Analyzes frame] "Haan Sir, motion detected h! Koi na koi chhalana chahiye"
+   84  ```
+
+   88  User: "Aaram-e-kya h room me?"
+   89: MYRA: [Analyzes] "Room me normal chamak h, sab shant h, koi movement nahi"
+   90  ```
+
+  119  description = scene_analysis.get("description")
+  120: # MYRA speaks: description
+  121  ```
+
+  141  ✅ **Frame analysis:** Brightness, motion, edges, colors
+  142: ✅ **Natural descriptions:** Hinglish output in MYRA's voice
+  143  ✅ **Real-time:** Can describe live camera feed
+
+  167  
+  168: ## How to Use with MYRA
+  169  
+
+  185  result = camera.describe_scene()
+  186: print(result['description'])  # MYRA will speak this
+  187  ```
+
+  210  
+  211: MYRA can now:
+  212  - 👀 See the environment via camera
+
+  217  
+  218: **Ab MYRA sab dekh sakti h! Camera se poora environment dekh aur samjh sakti h!**
+
+COMPLETE_FEATURES_CHECKLIST.md:
+    1: # 🎯 MYRA Assistant - Complete Feature Checklist
+    2  
+
+  242  
+  243: Your MYRA assistant now has **51 fully implemented features** ready to use. Start with voice commands and enjoy!
+  244  
+
+COMPLETION_REPORT.md:
+    1: # MYRA AI - IRON MAN MODE
+    2  ## COMPLETION REPORT
+    3  
+    4: **Project**: MYRA AI – Iron Man Mode (Jarvis-Level Assistant)  
+    5  **Status**: ✅ **COMPLETE AND DELIVERED**  
+
+  329  ╔════════════════════════════════════════════════════════════╗
+  330: ║            MYRA AI - IRON MAN MODE                         ║
+  331  ║                                                             ║
+
+  361  
+  362: **MYRA Iron Man Mode** is a complete, production-ready Jarvis-level AI automation system for Windows 10/11.
+  363  
+
+  395  
+  396: **MYRA AI - Iron Man Mode**  
+  397  **Delivered: January 30, 2026**  
+
+  401  "Sir/Madam, I'm ready to assist you completely."
+  402: - MYRA AI, Iron Man Mode (Jarvis Edition)
+  403  ```
+
+DELIVERY_CHECKLIST_MEMORY.md:
+  378  
+  379: ✅ **System**: Permanent Memory for MYRA AI Assistant
+  380  ✅ **Status**: PRODUCTION READY
+
+DELIVERY_CHECKLIST.md:
+  368  
+  369: **Ready to make MYRA unforgettable! 🚀**
+  370  
+
+DEPLOYMENT_CHECKLIST.md:
+    1: # MYRA System Control - Deployment Checklist
+    2  
+
+   80    - "AudioLoop initialized successfully"
+   81:   - "MYRA Started"
+   82  
+
+  110    ```
+  111: - [ ] MYRA refuses all system commands when permissions disabled
+  112  - [ ] Error messages are clear and helpful
+
+  119  - [ ] Both buttons work correctly:
+  120:   - [ ] Deny → Action cancelled, MYRA explains
+  121    - [ ] Authorize → Action executes
+
+  150  - [ ] User command: "Meri screen dekho"
+  151: - [ ] MYRA response: "System control is disabled"
+  152  - [ ] No screenshot taken
+
+  166  - [ ] User command: "Meri screen dekho"
+  167: - [ ] MYRA response: "Screen access is disabled"
+  168  
+
+  188  
+  189: - [ ] Type Text: "Likho Hello MYRA"
+  190    - [ ] Confirmation popup
+
+  261  
+  262: 1. **System control gives MYRA access to your desktop**
+  263     - Can see your screen (capture screenshots)
+
+  268  2. **Always review confirmation popups**
+  269:    - Shows exactly what MYRA will do
+  270     - Always have option to deny
+
+DOCUMENTATION_INDEX_SYSTEM_CONTROL.md:
+  253  
+  254: ### "What commands can MYRA do?"
+  255  → [SYSTEM_CONTROL_QUICK_REFERENCE.md - Command Examples](SYSTEM_CONTROL_QUICK_REFERENCE.md)
+
+ECHO_PROTECTION_CODE_REFERENCE.md:
+  325  # Simulate what happens:
+  326: last_spoken = "Hello, I'm MYRA"
+  327  timestamp = time.time()
+
+  333  if elapsed < cooldown:
+  334:     incoming = "Hello, I'm MYRA"  # Same text
+  335      normalized_incoming = incoming.strip().lower()
+
+  352  
+  353: # In another terminal, use MYRA normally and watch the output
+  354  ```
+
+ECHO_PROTECTION_DIAGRAMS.md:
+  6  ┌──────────────────────────────────────────────────────────────┐
+  7: │                         MYRA AI System                        │
+  8  │  (Echo-Protected Real-Time Audio & Text Input Processing)    │
+
+ECHO_PROTECTION_FIX.md:
+    3  ## Problem Statement
+    4: MYRA was experiencing a self-talk loop where:
+    5  1. ADA speaks a response (output transcription)
+
+  268  ```
+  269: 1. ADA: "Hello, I'm MYRA!"
+  270  2. [Within 2 seconds, microphone captures ADA's audio]
+  271: 3. STT: "Hello, I'm MYRA!"
+  272  4. [Echo filter: REJECTED]
+
+ELECTRON_CAMERA_COMPLETE.md:
+    5  Your Request:
+    6: > "Abb hmm electron me bole ge to ye abb camera se hmko dekh paye gi MYRA"
+    7  
+    8: **Translation:** "Now if I tell Electron, it will show that MYRA can see me from the camera now"
+    9  
+
+   41  ┌─────────────────────────────┐
+   42: │ 🎥 MYRA's Camera Vision      │
+   43  ├─────────────────────────────┤
+
+  201  Backend: Receives voice command
+  202: MYRA: Calls camera_vision event
+  203  Result: Description + analysis shown
+
+  292  ✅ **Voice Integration**
+  293: - Works with MYRA commands
+  294  - Natural Hinglish output
+
+  425  Bottom-left corner shows purple box with:
+  426: - 🎥 MYRA's Camera Vision header
+  427  - ✅ Camera Ready indicator
+
+  433  - Click Full Analysis → Get detailed analysis
+  434: - Say "Dekh camera se" → MYRA describes scene
+  435  
+
+  465  
+  466: **Before:** MYRA could see through camera but UI didn't show it
+  467  **After:** Full Electron integration with beautiful UI component
+
+  475  
+  476: **MYRA Ab Electron Me Puri Tarah Dekh Sakti H! 🎥✨**
+  477  
+
+  527  
+  528: **Ab MYRA Electron Me Bhi Dekh Sakti H! 🎉**
+
+ELECTRON_CAMERA_INTEGRATION.md:
+    4  
+    5: MYRA ab Electron me camera vision dekh sakti h!
+    6  
+
+   27  - 🔴 **Red Light** - Camera unavailable
+   28: - 🎬 **Pulsing Icon** - MYRA is looking
+   29  - 📊 **Live Analytics** - Brightness, motion, activity
+
+   84  ┌─────────────────────────────┐
+   85: │ 🎥 MYRA's Camera Vision      │
+   86  ├─────────────────────────────┤
+
+  108  - **Responsive** - Adapts to screen size
+  109: - **Dark Theme** - Matches MYRA UI
+  110  
+
+  355  ↓
+  356: MYRA: Captures frame, returns description in 100ms
+  357  Response: "Yaha kaafi bright h, sab shant h"
+
+  363  ↓
+  364: MYRA: Analyzes brightness, motion, activity
+  365  Response: Detailed UI showing all metrics
+
+  371  ↓
+  372: MYRA: Uses camera_vision socket event
+  373  ↓
+
+  408  
+  409: **MYRA Ab Electron Me Dekh Sakti H! 🎥✨**
+  410  
+
+ELECTRON_CAMERA_QUICK_START.md:
+   55  ┌─────────────────────────────┐
+   56: │ 🎥 MYRA's Camera Vision      │ ← TOP-LEFT
+   57  ├─────────────────────────────┤
+
+  111  
+  112: ## 📊 What MYRA Sees
+  113  
+
+  196  
+  197: ### MYRA Understanding:
+  198  ```
+
+  399  
+  400: **Go enjoy MYRA's camera vision! 🎥✨**
+  401  
+
+EMOTION_AI_CHECKLIST.md:
+  502  
+  503: 🎉 **Emotion AI for ADA V2 is complete and ready to make MYRA emotionally aware!** 🤖💭
+
+EMOTION_AI_GUIDE.md:
+    4  
+    5: **Emotional Awareness** (Emotion AI) is a new ADA V2 feature that enables MYRA to detect and respond to user emotions. This feature analyzes both voice tone and facial expressions to understand emotional context and adapt response styles accordingly.
+    6  
+    7  ### Goal
+    8: > MYRA should not only follow commands, but also detect and respond to user emotions with appropriate tone, pacing, and energy level.
+    9  
+
+  141  
+  142: **Purpose**: Adapts MYRA's response style based on detected emotion
+  143  
+
+  607  │              ▼                 ▼              │
+  608: │         MYRA Response      Frontend UI        │
+  609  │         (Adapted tone)     (Emotion badge)    │
+
+EMOTION_AI_IMPLEMENTATION_SUMMARY.md:
+    4  
+    5: I've implemented a **production-ready Emotional Awareness system** for ADA V2 that enables MYRA to detect and respond to user emotions without breaking existing functionality.
+    6  
+
+   92  #### `response_adapter.py` (13.4 KB)
+   93: - **Adapts MYRA's response style** based on emotion
+   94  - Maps emotions to communication styles:
+
+  294  
+  295: Based on detected emotion, MYRA adapts:
+  296  
+
+  456  
+  457: All in a **clean, modular, extensible system** that respects ADA's architecture and MYRA's personality.
+  458  
+
+  466  
+  467: Enjoy your Emotion-Aware MYRA! 🤖💭
+  468  
+
+EMOTION_AI_INDEX.md:
+  415  
+  416: **Welcome to emotionally-aware MYRA!** 🤖💭
+  417  
+
+EMOTION_AI_QUICK_REFERENCE.md:
+  68      ↓
+  69: MYRA Response (same functionality, adapted tone)
+  70  ```
+
+EMOTION_AI_SYSTEM_OVERVIEW.md:
+   36  
+   37: When emotion detected, MYRA adapts:
+   38  - **Tone**: Professional → Enthusiastic → Soothing → Reassuring
+
+   88                      ▼
+   89:           🗣️ MYRA Response
+   90         (Same words, better vibe!)
+
+  148      # Response will be: calm, reassuring, step-by-step
+  149:     await MYRA.respond("You seem stressed...")
+  150  ```
+
+  383  
+  384: The beauty of this implementation is that **emotion doesn't change MYRA's actions**, it only changes **how she communicates them**.
+  385  
+
+  419  
+  420: All in a **clean, modular, extensible system** that makes MYRA truly emotionally aware.
+  421  
+
+  433  
+  434: **Enjoy your emotion-aware MYRA!** 🤖💭
+  435  
+
+FEATURE_COMPLETE_SUMMARY.md:
+   94  
+   95: MYRA Integration:
+   96    ✅ Tool registered with Gemini
+
+  116    • Backend integration (100%)
+  117:   • MYRA AI instructions (100%)
+  118    • Documentation (100%)
+
+  153    → Say: "Read the screen"
+  154:   → MYRA will capture and read the screen content
+  155  
+
+  184  
+  185: 📊 MYRA ASSISTANT - COMPLETE FEATURE COUNT
+  186  ═════════════════════════════════════════════════════════════════════════════════
+  187  
+  188: Your MYRA now has 52 fully integrated features:
+  189  
+
+  235    • Hinglish support: ✅ Hindi & English
+  236:   • Natural responses: ✅ MYRA speaks what she sees
+  237    • Multiple features: ✅ Works with other tools
+
+FILES_CREATED_MANIFEST.md:
+    1: # MYRA IRON MAN MODE - FILES CREATED
+    2  
+
+    4  
+    5: **Project**: MYRA AI - Iron Man Mode (Jarvis-Level Assistant)  
+    6  **Date**: January 30, 2026  
+
+  519  
+  520: **MYRA AI - Iron Man Mode**  
+  521  **Status: ✅ READY FOR PRODUCTION**  
+
+HALF_DUPLEX_COMPLETE_SUMMARY.md:
+  4  
+  5: Successfully implemented a **half-duplex voice architecture** for the MYRA AI assistant that automatically pauses the microphone when ADA speaks and resumes it when ADA finishes. This architectural approach **prevents all audio/text feedback loops at the source** rather than relying on filtering.
+  6  
+
+HALF_DUPLEX_DIAGRAMS.md:
+   96  T=610ms: Model continues speaking
+   97:          ├─ More deltas arrive: "MYRA, your"
+   98           ├─ Accumulates in _ada_output_text
+
+  251  │         ├─ More output           │
+  252: │         │   += "MYRA, your "     │
+  253  │         │                        │
+
+HALF_DUPLEX_TESTING.md:
+  30  1. Say: "Hello, what's your name?"
+  31: 2. ADA responds: "I'm MYRA, an AI assistant..."
+  32  3. Observe: Mic should pause during response, resume when ADA finishes
+
+HALF_DUPLEX_VOICE_IMPLEMENTATION.md:
+  3  ## Overview
+  4: Successfully implemented a half-duplex voice architecture for MYRA where the microphone automatically pauses when ADA speaks and resumes when ADA finishes. This eliminates feedback loops at the architectural level rather than through filtering.
+  5  
+
+IMPLEMENTATION_CHECKLIST.md:
+    1: # MYRA IRON MAN MODE - IMPLEMENTATION CHECKLIST
+    2  
+
+    4  
+    5: **Project**: MYRA AI - Iron Man Mode (Jarvis-Level Assistant)  
+    6  **Status**: ✅ COMPLETE  
+
+  487  
+  488: **MYRA AI - Iron Man Mode**  
+  489  **Status: ✅ PRODUCTION READY FOR DEPLOYMENT**  
+
+index.html:
+  5      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  6:     <title>MYRA</title>
+  7    </head>
+
+IRON_MAN_DELIVERY.md:
+    1: # MYRA AI - IRON MAN MODE DELIVERY SUMMARY
+    2  
+
+  396  ```
+  397: MYRA AI - Iron Man Mode
+  398  Status: ✅ PRODUCTION READY
+
+IRON_MAN_FINAL_SUMMARY.md:
+    1: # MYRA AI - IRON MAN MODE - FINAL SUMMARY
+    2  
+
+  429  
+  430: The system is ready to integrate with your existing MYRA backend and frontend.
+  431  
+
+  443  
+  444: **MYRA AI - Iron Man Mode**  
+  445  **Status: ✅ PRODUCTION READY**  
+
+IRON_MAN_README.md:
+    1: # MYRA AI - IRON MAN MODE
+    2  ## Complete Implementation - Ready for Production
+
+  371  
+  372: **MYRA AI - Iron Man Mode**  
+  373  **Jarvis-Level Automation System**  
+
+MEDIA_PLAY_BEFORE_AFTER.md:
+  223  
+  224: MYRA: "OK, YouTube me search kar rahi hoon..."
+  225  
+
+  230  User: "Kya hua?"
+  231: MYRA: "Success! Video playing..."
+  232  User: "Kaunsa video? Kuch nhi dikhta!" 😞
+
+  238  
+  239: MYRA: "OK, YouTube me search kar rahi hoon..."
+  240  
+
+MEDIA_PLAY_FIX_REPORT.md:
+  290       ↓
+  291: MYRA: "YouTube pe Honey Singh ke gane khoj rahi hoon..."
+  292       ↓
+
+  395  
+  396: And MYRA will search and play it! 🎉
+  397  
+
+MEDIA_PLAY_QUICK_FIX.md:
+  27       ↓ (Sent to backend)
+  28: MYRA: "YouTube pe search kar rahi hoon..."
+  29       ↓ (media_controller.youtube_play called)
+
+MEMORY_COMPLETE.md:
+    1: # ✅ MYRA AI - PERMANENT MEMORY SYSTEM COMPLETE
+    2  
+
+    4  
+    5: I've built a **production-ready permanent memory system** for MYRA AI that remembers users across app restarts.
+    6  
+
+   18  2. **Habits** - Sleep time, work time, clothing
+   19: 3. **Memories** - "MYRA ye yaad rakh lo"
+   20  4. **Emotions** - Tracked from voice/face analysis
+
+   99  USER SAYS:
+  100: "MYRA ye yaad rakh lo: Maine CNC order kiya"
+  101          ↓
+
+  126  
+  127: MYRA: "Good morning Ayush Sir! 
+  128         Kal aap late soye the, aaj thode tired lag rahe ho.
+
+  136  User: "Mujhe lofi pasand hai"
+  137: MYRA: "Great! Maine note kar liya."
+  138  [Saved to memory]
+
+  145  ```
+  146: User: "MYRA ye yaad rakh lo: Maine CNC order kiya"
+  147: MYRA: "Bilkul, maine yaad kar liya."
+  148  [Saved permanently]
+
+  150  [After restart]
+  151: MYRA: "Aapne CNC order kiya tha na? Kaisa chal raha hai?"
+  152  [Recalled from permanent memory]
+
+  181      {"sender": "User", "text": "..."},
+  182:     {"sender": "MYRA", "text": "..."}
+  183    ]
+
+  322    App starts
+  323:   MYRA: "Namaste! Aapka naam kya hai?"
+  324    User: "Ayush Sir"
+  325:   MYRA: "Namaste Ayush Sir!"
+  326    [Saved to memory]
+
+  328    User: "Mujhe lofi pasand hai"
+  329:   MYRA: "Great! Note kar liya."
+  330    [Saved to memory]
+
+  334    [Loads permanent_memory.json]
+  335:   MYRA: "Good morning Ayush Sir! 
+  336           Aapko lofi music pasand hai. Kya sunu?"
+
+  355  
+  356: You now have a **complete permanent memory system** for MYRA AI that:
+  357  
+
+  378  
+  379: **Ready to make MYRA unforgettable! 🚀**
+
+MEMORY_DOCUMENTATION_INDEX.md:
+  332  ### What Was Solved
+  333: ✅ MYRA now remembers everything
+  334  ✅ Memories survive backend restart
+
+MEMORY_EXAMPLES.py:
+    2  PRODUCTION-READY CODE EXAMPLES
+    3: Complete working examples for MYRA AI permanent memory system
+    4  """
+
+  173      print("\n[1] USER INTRODUCTION")
+  174:     print("User: Hi MYRA, I'm Ayush")
+  175      registration = init.register_new_user("Ayush", user_id="ayush_test_001")
+  176:     print(f"MYRA: {registration['message']}")
+  177      
+
+  190          if response:
+  191:             print(f"MYRA: {response}")
+  192      
+
+  203          response = integration.handle_habit_learning(category, data)
+  204:         print(f"MYRA: {response}")
+  205      
+
+  209      memories = [
+  210:         "MYRA ye yaad rakh lo: Maine CNC machine order kar diya",
+  211          "Remember: Tomorrow is my project deadline",
+
+  217          response = integration.handle_memory_save_request(memory)
+  218:         print(f"MYRA: {response}")
+  219      
+
+  225      response = integration.handle_emotional_conversation(user_input, "tired")
+  226:     print(f"MYRA: {response}")
+  227      
+
+  253      greeting = integration.get_startup_greeting()
+  254:     print(f"MYRA: {greeting}")
+  255      
+
+  344      print("\n" + "=" * 60)
+  345:     print("MYRA AI - PERMANENT MEMORY SYSTEM")
+  346      print("PRODUCTION-READY EXAMPLES")
+
+MEMORY_FLOW_DIAGRAMS.md:
+    6  ┌─────────────────────────────────────────────────────────────────┐
+    7: │                     MYRA AI FRONTEND                            │
+    8  │                 (React / Electron / Web)                        │
+
+   65  ┌──────────────────────────────────────────────────────────────────┐
+   66: │  USER VOICE INPUT: "MYRA ye yaad rakh lo: Maine CNC order kiya"  │
+   67  └──────────────────┬───────────────────────────────────────────────┘
+
+  340  │ User: "Music suno"                                  │
+  341: │ MYRA: "Aapka favorite music lofi hai.              │
+  342  │        Kya lofi playlist chal du?"                  │
+
+  469    APP START → No memory
+  470:   MYRA: "Namaste! Main MYRA hoon. Aapka naam kya hai?"
+  471  
+
+  473    USER: "Ayush Sir"
+  474:   MYRA: "Namaste Ayush Sir!"
+  475    SAVED: name = "Ayush Sir"
+
+  478    USER: "Mujhe lofi music pasand hai"
+  479:   MYRA: "Great! Maine note kar liya."
+  480    SAVED: preferences.music.favorite = "lofi"
+
+  483    USER: "Main ab so jaunga, 1:30 ko"
+  484:   MYRA: "Good night! Sleep well."
+  485    SAVED: habit.sleep_time = "1:30 AM"
+
+  487  Day 1, 11:35 PM:
+  488:   USER: "MYRA, ye yaad rakh lo: Maine CNC order kiya"
+  489:   MYRA: "Bilkul!"
+  490    SAVED: memory.last_learning = "Maine CNC order kiya"
+
+  498    ▼
+  499:   MYRA: "Good morning Ayush Sir! Kal aap 1:30 ko soye, 
+  500           aaj thode tired lag rahe ho. 
+
+MEMORY_IMPLEMENTATION_SUMMARY.md:
+  149    "last_conversations": [
+  150:     {"sender": "User", "text": "MYRA ye yaad rakh lo"},
+  151      {"sender": "ADA", "text": "Theek hai sir"}
+
+  328  
+  329: **System**: Permanent Memory for MYRA AI Assistant  
+  330  **Status**: ✅ ACTIVE AND WORKING  
+
+MEMORY_IMPLEMENTATION.md:
+    1  ---
+    2: # MYRA AI - PERMANENT MEMORY SYSTEM
+    3  ## Complete Production Implementation
+
+    8  
+    9: MYRA AI now has a **complete permanent memory system** that:
+   10  
+
+   93    "last_conversations": [
+   94:     {"sender": "User", "text": "MYRA ye yaad rakh lo...", "timestamp": "..."}
+   95    ]
+
+  104  ```
+  105: User: "MYRA ye yaad rakh lo: Maine kal CNC order kar diya"
+  106: MYRA: "Bilkul, maine yaad kar liya: 'Maine kal CNC order kar diya'. Hamesha yaad rakhungi."
+  107  → Saved to permanent memory
+
+  113  User: "Mujhe lofi music bahut pasand hai"
+  114: MYRA: "Great! Maine note kar liya - aapko lofi pasand hai."
+  115  → Saved to preferences.music
+
+  122  → System detects pattern
+  123: MYRA: "Aap usually 1:30 AM ke baad sote ho na?"
+  124  → Saved as habit.sleep_time
+
+  131  → Voice analysis: emotion = "tired"
+  132: MYRA: "Mujhe aapka dukh samajh aata hai. Rest kar lo."
+  133  → Saved to emotion_history
+
+  388  ```
+  389: User: Hi MYRA
+  390: MYRA: Namaste! Aapka naam kya hai?
+  391  
+  392  User: I'm Ayush Sir
+  393: MYRA: Namaste Ayush Sir! Aapko meet karke khushi hui.
+  394  (Saved: name = "Ayush Sir")
+
+  396  User: Mujhe lofi music pasand hai
+  397: MYRA: Great! Maine note kar liya.
+  398  (Saved: preferences.music.favorite = "lofi")
+
+  400  User: Maine kal 1:30 ko soya
+  401: MYRA: Aapka sleep time note kar diya.
+  402  (Saved: habit.sleep_time = "1:30 AM")
+
+  408  
+  409: MYRA: "Good morning Ayush Sir! 
+  410         Kal aap late soye the (1:30 AM), 
+
+  416  User: "Haan, lofi suno"
+  417: MYRA: "Perfect! Lofi playlist shuru karte hain."
+  418  (Responds using saved preference)
+
+  469  
+  470: Same as main MYRA AI project.
+  471  
+
+  475  
+  476: **MYRA AI now remembers users permanently.** 🎉
+  477  
+
+MEMORY_INDEX.md:
+  4  
+  5: This index documents all files created and modified for MYRA AI's permanent memory system.
+  6  
+
+MEMORY_QUICK_START.md:
+    3  ## 30-Second Overview
+    4: MYRA AI now **remembers user permanently**. Data survives app restarts using local JSON storage.
+    5  
+
+  122  |---------|--------------|
+  123: | "MYRA ye yaad rakh lo: X" | Saves X to permanent memory |
+  124  | "Mujhe X pasand hai" | Saves X as preference |
+
+MEMORY_READY_TO_DEPLOY.md:
+    1: # 🎉 MYRA AI - PERMANENT MEMORY SYSTEM
+    2  ## Complete Implementation - Ready to Deploy
+
+  203  ```
+  204: User: "MYRA ye yaad rakh lo: Maine CNC order kiya"
+  205  → Saved to permanent_memory.json
+
+  225  → Build system prompt for Gemini
+  226: → MYRA: "Aapka lofi music favorite hai. Sunu?"
+  227  ```
+
+  337  
+  338: You now have a **complete, production-ready permanent memory system** for MYRA AI that:
+  339  
+
+  376  App opens
+  377: MYRA: "Namaste! Main MYRA hoon. Aapka naam kya hai?"
+  378  User: "Ayush Sir"
+  379: MYRA: "Namaste Ayush Sir! Aapko meet karke khushi hui."
+  380  ```
+
+  384  User: "Mujhe lofi music pasand hai"
+  385: MYRA: "Great! Maine note kar liya."
+  386  [Saved]
+
+  392  [Loads permanent memory]
+  393: MYRA: "Good morning Ayush Sir! 
+  394         Aapka favorite music lofi hai. Kya sunu?"
+
+  405  
+  406: **Built with ❤️ for MYRA AI**  
+  407  **Status: Production Ready 🚀**
+
+MEMORY_SERVER_INTEGRATION.md:
+   75      
+   76:     # Check for memory save request ("MYRA ye yaad rakh lo")
+   77      if any(trigger in user_input.lower() for trigger in ["yaad rakh", "remember", "yaad rakho"]):
+   78          response = memory_integration.handle_memory_save_request(user_input)
+   79:         await sio.emit("MYRA_response", {"text": response, "type": "memory_save"}, to=sid)
+   80          return
+
+   85          if response:
+   86:             await sio.emit("MYRA_response", {"text": response, "type": "preference_saved"}, to=sid)
+   87              return
+
+   92          if response:
+   93:             await sio.emit("MYRA_response", {"text": response, "type": "emotional_support"}, to=sid)
+   94      
+
+  183          response = memory_integration.handle_habit_learning(category, habit_data)
+  184:         await sio.emit("MYRA_response", {
+  185              "text": response,
+
+  321          response = memory_integration.handle_memory_save_request(user_input)
+  322:         await sio.emit("MYRA_response", {"text": response}, to=sid)
+  323          return
+
+  327          if response:
+  328:             await sio.emit("MYRA_response", {"text": response}, to=sid)
+  329              return
+
+  367     - App startup should show personalized greeting
+  368:    - Say "MYRA ye yaad rakh lo: ..." to test memory save
+  369     - Say "Mujhe X pasand hai" to test preference detection
+
+MEMORY_SYSTEM_COMPLETE.md:
+  134    "last_conversations": [
+  135:     {"sender": "User", "text": "MYRA ye yaad rakh lo...", "timestamp": "..."},
+  136      {"sender": "ADA", "text": "Theek hai sir...", "timestamp": "..."}
+
+  193  ```
+  194: 1. User says "MYRA ye yaad rakh lo..."
+  195  2. Frontend detects and emits save_memory event
+
+  274    "user_identified": false,
+  275:   "greeting": "Namaste! Main aapka AI assistant MYRA hoon.",
+  276    "context_summary": null
+
+  302  ```
+  303: User: "MYRA, mujhe lofi music pasand hai"
+  304  
+
+  310  
+  311: Next session: MYRA remembers!
+  312  ```
+
+MEMORY_SYSTEM_GUIDE.md:
+    7  
+    8: Now MYRA will remember:
+    9  - User's name
+
+   43    "last_conversations": [
+   44:     {"sender": "User", "text": "MYRA ye yaad rakh lo...", "timestamp": "..."}
+   45    ]
+
+  160    "sender": "User",  # or "ADA"
+  161:   "text": "MYRA, maine yeh project complete kar diya"
+  162  })
+
+  167    "sender": "User",
+  168:   "text": "MYRA, maine yeh project complete kar diya",
+  169    "success": true
+
+  202  
+  203: // When user says "MYRA ye yaad rakh lo..."
+  204  socket.emit('save_memory', {
+
+  212    sender: 'User',
+  213:   text: 'Haan MYRA, ye theek hai'
+  214  });
+
+  248  # Save conversation
+  249: mm.save_conversation_permanent("User", "MYRA, ye theek hai")
+  250  
+
+package.json:
+  3    "version": "1.0.0",
+  4:   "description": "MYRA V2 - AI Assistant",
+  5    "main": "electron/main.js",
+
+PERMANENT_MEMORY_GUIDE.md:
+    3  ## Overview
+    4: MYRA AI now remembers users permanently across app restarts using a local JSON-based memory system. This guide shows production-ready code and integration steps.
+    5  
+
+   79  # Save conversations
+   80: mm.save_conversation_permanent("User", "MYRA mujhe ye yaad rakh lo")
+   81  ```
+
+  141  
+  142: # When user says "MYRA ye yaad rakh lo"
+  143  if "yaad rakh" in user_voice_input:
+
+  184  ↓
+  185: MYRA: "Good morning Ayush Sir! Kal aap late soye the, aaj thode tired lag rahe ho."
+  186        (Using sleep_time habit + emotion_history)
+
+  190  ```
+  191: User: "MYRA, mujhe lofi music bahut pasand hai"
+  192  ↓
+
+  196  ↓
+  197: MYRA: "Great! Maine note kar liya - aapko lofi pasand hai."
+  198  ↓
+  199: (Later) MYRA: "Aapka favorite music lofi hai. Kya sunu?"
+  200  ```
+
+  210  ↓
+  211: MYRA: "Main samajhti hoon. Rest kar lo. Mujhe yaad hai last kal bhi thak the ho."
+  212        (From emotion_history showing trend)
+
+  226  ↓
+  227: MYRA: "Namaste Ayush Sir! Kabse aap ko nahi dekha!"
+  228  ```
+
+  296        "sender": "User",
+  297:       "text": "MYRA mujhe ye yaad rakh lo: Maine kal CNC machine order kar diya",
+  298        "context": "voice_request",
+
+  301      {
+  302:       "sender": "MYRA",
+  303        "text": "Bilkul, maine yaad kar liya: 'Maine kal CNC machine order kar diya'. Hamesha yaad rakhungi.",
+
+  368  # Test memory save
+  369: response = integration.handle_memory_save_request("MYRA ye yaad rakh lo: Maine exam paas kar liya")
+  370  print(response)  # ✓ Should save and confirm
+
+  395      ↓
+  396: MYRA: "Good morning Ayush Sir! Kal aap late soye the, aaj thode tired lag rahe ho."
+  397        "Aapka favorite music lofi hai. Kya sunu?"
+
+  467  
+  468: MYRA AI now has a **complete permanent memory system** that:
+  469  - ✅ Saves user identity, preferences, habits, emotions, conversations
+
+PERMANENT_MEMORY_QUICK_SETUP.md:
+   90    sender: 'User',  // or 'ADA'
+   91:   text: 'MYRA, maine yeh project complete kar diya'
+   92  });
+
+  152  ```
+  153: User says "MYRA ye yaad rakh lo..."
+  154    ↓
+
+  200    "last_conversations": [
+  201:     {"sender": "User", "text": "MYRA ye yaad rakh lo...", "timestamp": "..."},
+  202      {"sender": "ADA", "text": "Theek hai sir, yaad rakh liya", "timestamp": "..."}
+
+  244    user_identified: false,
+  245:   greeting: "Namaste! Main aapka AI assistant MYRA hoon. Aapka naam kya hai?"
+  246  }
+
+  269  ```
+  270: User: "MYRA, mujhe lofi music pasand hai"
+  271  
+
+  278  
+  279: Next time: MYRA knows "Ayush Sir ko lofi music pasand hai"
+  280  ```
+
+PERMANENT_MEMORY_SUMMARY.md:
+    1: # MYRA AI - PERMANENT MEMORY SYSTEM
+    2  ## Production-Ready Implementation Summary
+
+   72      ↓
+   73:   - MYRA: "Good morning Ayush Sir! Kal aap late soye the, aaj thode tired lag rahe ho."
+   74      
+   75  ELSE:
+   76:   - MYRA: "Namaste! Main aapka AI assistant MYRA hoon. Aapka naam kya hai?"
+   77  ```
+
+   80  ```
+   81: USER VOICE: "MYRA ye yaad rakh lo: Maine CNC order kar diya"
+   82      ↓
+
+   88      ↓
+   89: MYRA: "Bilkul, maine yaad kar liya..."
+   90      ↓
+
+  103      ↓
+  104: MYRA: "Great! Maine note kar liya..."
+  105      ↓
+
+  152    "last_conversations": [
+  153:     {"sender": "User", "text": "MYRA ye yaad rakh lo...", ...}
+  154    ]
+
+  239  User: (Opens app at 8:00 AM)
+  240: MYRA: "Good morning Ayush Sir! Kal aap late soye the, aaj thode tired lag rahe ho. 
+  241         Aapka favorite music lofi hai. Kya sunu?"
+
+  248  User: "Mujhe lofi music pasand hai"
+  249: MYRA: "Great! Maine note kar liya - aapko lofi pasand hai."
+  250  (Saved to permanent memory)
+
+  252  User: (2 days later) "Music suno?"
+  253: MYRA: "Aapka favorite music lofi hai. Kya lofi playlist chal du?"
+  254  (Recalled from permanent memory after restart)
+
+  260  (Voice analysis: emotion = "tired", confidence = 0.95)
+  261: MYRA: "Mujhe aapka dukh samajh aata hai. Rest kar lo."
+  262  (Saved to permanent emotion_history)
+
+  264  User: (Next day) "Aaj thak gaya"
+  265: MYRA: "Kal bhi thak the ho na? Aapka sleep schedule thik nahi hai."
+  266  (References from emotion_history showing trend)
+
+  303  3. Restart → greeting should remember name
+  304: 4. Say "MYRA ye yaad rakh lo" → confirm saved
+  305  5. Restart → recall saved memory
+
+QUICK_REFERENCE_SCREEN_READ.md:
+   3  ## What Was Added? 
+   4: A **live screen reading feature** that lets MYRA capture your screen and read what she sees.
+   5  
+
+  11  ## How to Use It?
+  12: Say to MYRA:
+  13  ```
+
+  43    ↓
+  44: MYRA: Calls screen_read tool
+  45    ↓
+
+  50    ↓
+  51: MYRA: "I see: [text content]..."
+  52  ```
+
+README_CAMERA_VISION_FIX.md:
+    5  Your Problem:
+    6: > "Main camera module se aapko physically nahi dekh sakta... Aisa bol raha but phile MYRA camera se dekh kar sab bata deti to abb kyu nhi baata pa rahi h"
+    7  
+
+   16     - System couldn't read or process camera input
+   17:    - MYRA had no way to see the environment
+   18  
+
+   24  
+   25: ### 3. **Integrated with MYRA**
+   26     - Updated `backend/ada.py` 
+
+   28     - Updated screen_read tool handler
+   29:    - MYRA can now see and describe
+   30  
+
+   58  
+   59: ## 🚀 Now MYRA Can
+   60  
+
+   63  
+   64: MYRA Response: "Yaha bahot aiyajala h, bohat kuch chal raha h, motion dekh raha hu"
+   65  
+
+   68  
+   69: ### MYRA's New Abilities:
+   70  - 👀 **See:** Live camera feed
+
+  135  
+  136: All these now work with MYRA:
+  137  
+
+  184      ↓
+  185: MYRA speaks response
+  186  ```
+
+  224  
+  225: ### Use with MYRA
+  226  ```
+  227  Voice: "Dekh camera se"
+  228: MYRA: [Analyzes scene] "Yaha bahot aiyajala h..."
+  229  ```
+
+  235  result = camera.describe_scene()
+  236: print(result['description'])  # MYRA will speak this
+  237  ```
+
+  256  
+  257: ✅ **Problem Solved:** MYRA can now see via camera
+  258  ✅ **Real-Time Vision:** 30fps live analysis
+
+  271  - ❌ Tesseract missing
+  272: - ❌ MYRA couldn't see
+  273  - ❌ No camera vision
+
+  277  - ✅ Real-time camera vision
+  278: - ✅ MYRA can see everything
+  279  - ✅ Motion detection works
+
+  282  ### Result:
+  283: **MYRA Ab Sab Dekh Sakti H! 🎥✨**
+  284  
+
+  332  
+  333: Your Issue: MYRA couldn't see from camera
+  334  Root Cause: Tesseract not installed
+  335  Solution: Built real-time camera vision system
+  336: Result: MYRA can now see and describe everything
+  337  
+  338: **Ab MYRA sab dekh aur samjh sakti h!** 🎉
+  339  
+
+README_MEMORY_SYSTEM.md:
+    1: # 🧠 MYRA's Permanent Memory System
+    2  
+
+    4  
+    5: **Problem**: MYRA was forgetting everything. Every time the backend restarted, she forgot the user's name and all memories.
+    6  
+    7: **Solution**: Now MYRA remembers EVERYTHING - even when the backend shuts down.
+    8  
+
+   73  
+   74: This file contains everything MYRA knows about the user:
+   75  - Name
+
+   93  ```
+   94: Backend starts → MYRA doesn't know the user
+   95  Frontend: "What's your name?"
+
+  123  
+  124: Next time: MYRA knows "Ayush Sir ko lofi music pasand hai"
+  125  ```
+
+  159    "last_conversations": [
+  160:     {"sender": "User", "text": "MYRA ye yaad rakh lo..."},
+  161      {"sender": "ADA", "text": "Theek hai sir..."}
+
+  360  
+  361: MYRA now remembers everything, even when the backend shuts down! 🎉
+  362  
+
+README_SYSTEM_CONTROL.md:
+    1: # 🎉 MYRA System Control - Complete Implementation
+    2  
+
+    4  
+    5: I have successfully upgraded MYRA (ADA V2) with controlled Windows desktop access, including screen awareness and file/app interaction capabilities. **All hard safety requirements have been implemented.**
+    6  
+
+  150  ```
+  151: "Notepad me likho I am MYRA"     → Opens Notepad & types text
+  152  "Type hello world"               → Types into focused app
+
+  224     - Default: `false` (safe)
+  225:    - When true: MYRA can control desktop
+  226  
+
+  229     - Default: `false` (safe)
+  230:    - When true: MYRA can capture screenshots
+  231  
+
+  234     - Default: `false` (safe)
+  235:    - When true: MYRA can open/search files
+  236  
+
+  245  }
+  246: // MYRA refuses ALL system commands
+  247  ```
+
+  255  }
+  256: // MYRA can: open apps, open files
+  257: // MYRA CANNOT: capture screenshots
+  258  ```
+
+  266  }
+  267: // MYRA can: do everything
+  268  ```
+
+  336  
+  337: ### Example: "Notepad kholo aur likho I am MYRA"
+  338  
+  339  ```
+  340: 1. USER speaks: "Notepad kholo aur likho I am MYRA"
+  341  
+
+  343     - Action 1: open_app (app_name: "notepad")
+  344:    - Action 2: type_text (text: "I am MYRA")
+  345  
+
+  348     │ ⚠️  AUTHORIZATION         │
+  349:    │ MYRA wants to:           │
+  350     │ Open application: notepad│
+
+  363     │ ⚠️  AUTHORIZATION         │
+  364:    │ MYRA wants to:           │
+  365     │ Type text into app       │
+
+  371  
+  372: 8. SYSTEM_AGENT.type_text("I am MYRA")
+  373     → Text typed into Notepad
+
+  375  
+  376: 9. MYRA responds: "Done! I've typed the message into Notepad"
+  377  ```
+
+README.md:
+    1: # 🎉 MYRA System Control - Complete Implementation
+    2  
+
+    4  
+    5: I have successfully upgraded MYRA (ADA V2) with controlled Windows desktop access, including screen awareness and file/app interaction capabilities. **All hard safety requirements have been implemented.**
+    6  
+
+  150  ```
+  151: "Notepad me likho I am MYRA"     → Opens Notepad & types text
+  152  "Type hello world"               → Types into focused app
+
+  224     - Default: `false` (safe)
+  225:    - When true: MYRA can control desktop
+  226  
+
+  229     - Default: `false` (safe)
+  230:    - When true: MYRA can capture screenshots
+  231  
+
+  234     - Default: `false` (safe)
+  235:    - When true: MYRA can open/search files
+  236  
+
+  245  }
+  246: // MYRA refuses ALL system commands
+  247  ```
+
+  255  }
+  256: // MYRA can: open apps, open files
+  257: // MYRA CANNOT: capture screenshots
+  258  ```
+
+  266  }
+  267: // MYRA can: do everything
+  268  ```
+
+  336  
+  337: ### Example: "Notepad kholo aur likho I am MYRA"
+  338  
+  339  ```
+  340: 1. USER speaks: "Notepad kholo aur likho I am MYRA"
+  341  
+
+  343     - Action 1: open_app (app_name: "notepad")
+  344:    - Action 2: type_text (text: "I am MYRA")
+  345  
+
+  348     │ ⚠️  AUTHORIZATION         │
+  349:    │ MYRA wants to:           │
+  350     │ Open application: notepad│
+
+  363     │ ⚠️  AUTHORIZATION         │
+  364:    │ MYRA wants to:           │
+  365     │ Type text into app       │
+
+  371  
+  372: 8. SYSTEM_AGENT.type_text("I am MYRA")
+  373     → Text typed into Notepad
+
+  375  
+  376: 9. MYRA responds: "Done! I've typed the message into Notepad"
+  377  ```
+
+ROLE_MAPPING_FIX.md:
+  319  ```
+  320: User speaks: "Hello MYRA"
+  321    → [ADA] User transcription emitted with valid role
+
+  323    → [Frontend] Role validation: PASS
+  324:   → Display: User: "Hello MYRA"
+  325  ✅ Correct role, message sent to model
+
+  329  ```
+  330: MYRA responds: "Hello! How can I help?"
+  331    → [ADA] ADA transcription emitted with valid role
+
+ROLE_TEXT_FIX_SUMMARY.md:
+  255  ```
+  256: [ADA DEBUG] [ROLE VALIDATION] Emitting User: 'Hello MYRA'
+  257: [SERVER DEBUG] [ROLE VALIDATION] PASS: User → 'Hello MYRA'
+  258: [ROLE VALIDATION] Frontend PASS: User → "Hello MYRA"
+  259  ```
+
+SCREEN_READ_FEATURE_STATUS.md:
+    9  | **OCR Module** | ✅ Ready | `pytesseract` installed - bindings to Tesseract |
+   10: | **MYRA Integration** | ✅ Ready | Tool registered in `ada.py` with full system instructions |
+   11  | **Tesseract Binary** | ⏳ Needed | Download and install from GitHub (see below) |
+
+   54  "Read the screen"
+   55: → MYRA captures screen and reads all visible text
+   56  
+
+   90      ↓
+   91: MYRA parses intent → Calls screen_read tool
+   92      ↓
+
+  102      ↓
+  103: Ada.py returns to MYRA:
+  104    "On your screen I see: [text content]..."
+  105      ↓
+  106: MYRA speaks response to user
+  107  ```
+
+  112  
+  113: | Feature | Code | Backend | MYRA | Tesseract | Ready? |
+  114  |---------|------|---------|------|-----------|--------|
+
+  141  
+  142: Your MYRA assistant can now:
+  143  
+
+SCREEN_READ_IMPLEMENTATION_SUMMARY.md:
+   22     - Added `screen_read` handler with error handling
+   23:    - Added system instructions for MYRA to use the tool
+   24     - Imports `ScreenReader` from screen_reader_simple
+
+   34  3. **`SCREEN_READ_QUICK_START.md`** - Quick 3-step setup
+   35: 4. **`COMPLETE_FEATURES_CHECKLIST.md`** - All 51 MYRA features
+   36  
+
+   68  ```
+   69: MYRA receives voice command
+   70    ↓
+
+   77    ↓
+   78: MYRA speaks: "I see: [extracted text]..."
+   79  ```
+
+   90    ↓
+   91: Return to MYRA
+   92  ```
+
+  115  | Backend integration | ✅ 100% | Tool registered and handler added |
+  116: | MYRA AI instructions | ✅ 100% | System instruction updated |
+  117  | Voice commands | ✅ 100% | Ready for voice input |
+
+  185  | `SCREEN_READ_FEATURE_STATUS.md` | Dashboard & capabilities |
+  186: | `COMPLETE_FEATURES_CHECKLIST.md` | All 51 MYRA features |
+  187  
+
+  191  
+  192: **Successfully implemented a complete live screen-reading feature for MYRA!**
+  193  
+
+SCREEN_READ_QUICK_START.md:
+   8  
+   9: Your MYRA assistant can now **read what's on your screen** and tell you what she sees!
+  10  
+
+  12  You: "Read the screen"
+  13: MYRA: "I see... [text from your screen]... Do you want me to do something?"
+  14  ```
+
+  83  
+  84: All integrated with voice commands through MYRA!
+  85  
+
+SCREEN_READ_SETUP.md:
+    7  - Extract text using Tesseract OCR
+    8: - MYRA can read screen content and speak it back to you
+    9  
+
+   56  
+   57: ## Usage in Electron (MYRA)
+   58  
+
+   64  🎤 "Screen ko read kar" 
+   65: → MYRA reads the visible screen and tells you what she sees
+   66  
+
+   70  🎤 "Read the screen and speak it"
+   71: → MYRA captures screen, extracts text, and reads it aloud
+   72  
+
+   95  3. **OCR**: Tesseract extracts all visible text
+   96: 4. **Return**: Text sent back to MYRA for speaking/responding
+   97  
+
+  133  | OCR text extraction | ✅ Ready* | Requires Tesseract installation |
+  134: | MYRA voice integration | ✅ Working | Speaks extracted text |
+  135  | Real-time capture | ✅ Working | Fast capture via mss |
+
+  174  3. ✅ Use voice commands in Electron: "Read screen"
+  175: 4. ✅ Enjoy live screen reading with MYRA! 🎉
+  176  
+
+SPOTIFY_YOUTUBE_FIX.md:
+   95  You say: "Spotify pe Arijit Singh chala"
+   96: → MYRA calls: `media_play(platform='spotify', query='Arijit Singh')`
+   97  → Spotify opens
+
+   99  → Plays first result
+  100: → MYRA responds: "Sir, play ho gaya" (Sir, playing)
+  101  
+
+  103  You say: "YouTube par Baarish chala de"
+  104: → MYRA calls: `media_play(platform='youtube', query='Baarish')`
+  105  → Chrome opens with YouTube search
+
+  109  → Clicks player and plays
+  110: → MYRA responds: "Sir, play ho gaya"
+  111  
+
+START_HERE_MEMORY.md:
+  164  ```
+  165: Server starts → "Namaste! Main MYRA hoon"
+  166  User: "Mera naam Ayush Sir hai"
+
+  185  
+  186: Next session: MYRA knows "Ayush Sir ko lofi music pasand hai"
+  187  ```
+
+  378  
+  379: 🎯 **Problem**: MYRA was forgetting everything
+  380  ✅ **Solution**: Permanent memory system implemented
+
+  395  **Now it works like this:**
+  396: - ✅ MYRA remembers everything
+  397  - ✅ Data saved to disk automatically
+
+system_agent.log:
+  112  [SYSTEM_AGENT] 2026-01-28 14:31:17,121 - INFO - Application launched: notepad.exe
+  113: [SYSTEM_AGENT] 2026-01-28 14:31:33,567 - INFO - Typing text: I am MYRA...
+  114  [SYSTEM_AGENT] 2026-01-28 14:31:34,833 - INFO - Text typed successfully
+
+  118  [SYSTEM_AGENT] 2026-01-28 14:33:12,954 - INFO - Application launched: notepad.exe
+  119: [SYSTEM_AGENT] 2026-01-28 14:33:30,350 - INFO - Typing text: I am MYRA...
+  120  [SYSTEM_AGENT] 2026-01-28 14:33:31,586 - INFO - Text typed successfully
+
+  138  [SYSTEM_AGENT] 2026-01-28 18:42:19,800 - INFO - Application launched: notepad.exe
+  139: [SYSTEM_AGENT] 2026-01-28 18:42:22,839 - INFO - Typing text: I am MYRA, I am don, I am gone...
+  140  [SYSTEM_AGENT] 2026-01-28 18:42:25,548 - INFO - Text typed successfully
+
+  149  [SYSTEM_AGENT] 2026-01-28 18:55:56,928 - INFO - Application launched: notepad.exe
+  150: [SYSTEM_AGENT] 2026-01-28 18:56:00,257 - INFO - Typing text: I am MYRA...
+  151  [SYSTEM_AGENT] 2026-01-28 18:56:01,492 - INFO - Text typed successfully
+
+  222  [SYSTEM_AGENT] 2026-01-28 22:09:11,932 - INFO - Text typed successfully
+  223: [SYSTEM_AGENT] 2026-01-28 22:10:17,441 - INFO - Typing text: I am MYRA
+  224: I am MYRA
+  225: I am MYRA
+  226: I am MYRA
+  227: I am MYRA
+  228  ...
+
+SYSTEM_CONTROL_GUIDE.md:
+    1: # System Control Feature for MYRA - Complete Implementation Guide
+    2  
+    3  ## Overview
+    4: MYRA now has controlled Windows desktop access with screen awareness and file/app interaction capabilities. All system actions require explicit user confirmation via a confirmation popup.
+    5  
+
+   38  4. **Detailed Logging**: Every action logged to `system_agent.log`
+   39: 5. **Clear Refusals**: If permissions disabled, MYRA refuses with explanation
+   40  
+
+   59  ### 1. Screen Capture
+   60: **When to use**: MYRA needs to see what's on screen
+   61  
+
+  174  params: {
+  175:   "text": "I am MYRA, your AI assistant",
+  176    "delay": 0.05  # Optional: delay between keystrokes (default 0.05s)
+
+  180  **User command examples**:
+  181: - "Notepad me likho I am MYRA"
+  182  - "Type this message"
+
+  320     - (Wait for confirmation popup to appear and approve)
+  321:    - "Now type: Hello MYRA"
+  322:    - MYRA opens Notepad, then types text into it
+  323  
+
+  336     - (Confirmation required)
+  337:    - MYRA finds and opens the PDF
+  338  
+
+  340  
+  341: When MYRA wants to perform a system action:
+  342  
+
+  348  │                                          │
+  349: │ MYRA wants to: Open application: notepad│
+  350  │                                          │
+
+  376  [SYSTEM_AGENT] 2026-01-27 10:15:41,345 - INFO - Application launched: notepad.exe
+  377: [SYSTEM_AGENT] 2026-01-27 10:15:42,678 - INFO - Typing text: Hello MYRA
+  378  ```
+
+  411  ```
+  412: User: "Notepad open karke likho I am MYRA"
+  413  ↓
+  414: MYRA: "Opening Notepad and will type the message"
+  415  ↓
+
+  428  ↓
+  429: MYRA: "Let me capture your screen"
+  430  ↓
+
+  434  ↓
+  435: MYRA: "Here's what I see on your screen"
+  436  [Shows screenshot in chat]
+
+  442  ↓
+  443: MYRA: "Adjusting brightness to 30%"
+  444  ↓
+
+  453  ↓
+  454: MYRA: "Searching for PDF on your desktop"
+  455  ↓
+
+SYSTEM_CONTROL_IMPLEMENTATION_SUMMARY.md:
+    1: # MYRA System Control Implementation - Complete Summary
+    2  
+
+    4  
+    5: All system control features have been successfully integrated into MYRA with full safety requirements implemented.
+    6  
+
+   75  - Color-coded for system actions vs other actions
+   76: - Shows what MYRA is about to do in plain language
+   77  - Warning message for desktop control actions
+
+  165     - ✅ If `file_access: false` → "File access is disabled"
+  166:    - ✅ User informed via MYRA's response
+  167  
+
+  181  TEXT INPUT
+  182: ├── "Notepad me likho I am MYRA"
+  183  ├── "Type my name"
+
+  401  → Screenshot captured and displayed
+  402: → MYRA: "Here's what I see on your screen"
+  403  ```
+
+  411  
+  412: User: "Likho Hello MYRA"
+  413  → Confirmation popup
+  414  → User approves
+  415: → Text typed: "Hello MYRA"
+  416  ```
+
+  420  User: "Desktop pe jo PDF hai use open karo"
+  421: → MYRA searches Desktop for PDF
+  422  → "Found: report.pdf"
+
+  433  → Screen brightness set to 30%
+  434: → MYRA: "Brightness set to 30%"
+  435  ```
+
+SYSTEM_CONTROL_QUICK_REFERENCE.md:
+    1: # MYRA System Control - Quick Reference
+    2  
+
+   31  User: "Notepad open karo"
+   32: MYRA: Opens Notepad with confirmation
+   33  
+   34  User: "Volume 50 kar do"
+   35: MYRA: Sets volume to 50% with confirmation
+   36  
+   37  User: "Meri screen dekho"
+   38: MYRA: Captures and shows screenshot
+   39  ```
+
+   66  | "Type my email" | Types email into focused app |
+   67: | "Write I am MYRA" | Types text into current window |
+   68  
+
+   98  - **Default**: `false`
+   99: - **When true**: MYRA can control apps, files, input, audio, display
+  100  
+
+  103  - **Default**: `false`
+  104: - **When true**: MYRA can capture and analyze screenshots
+  105  
+
+  108  - **Default**: `false`
+  109: - **When true**: MYRA can search, find, and open files
+  110  
+
+  185  User: "Find my resume"
+  186: MYRA: Searches Desktop, Documents, Home for resume files
+  187: MYRA: "Found: C:/Users/ayush/Desktop/Resume.pdf"
+  188  Result: Opens with default PDF viewer
+
+  234  1. User: "Meri screen dekho"
+  235: 2. MYRA: Asks for confirmation
+  236  3. User: Approves
+
+  242  1. User: "Notepad kholo"
+  243: 2. MYRA: Confirmation popup
+  244  3. User: Approves
+  245  4. Notepad opens
+  246: 5. User: "Likho Hello MYRA"
+  247: 6. MYRA: Confirmation popup
+  248  7. User: Approves
+
+  254  1. User: "Desktop pe jo PDF hai kholo"
+  255: 2. MYRA: Searches for PDF
+  256: 3. MYRA: "Found report.pdf - opening?"
+  257  4. User: Approves
+
+test_memory_system.py:
+  83      try:
+  84:         mm.save_conversation_permanent("User", "MYRA ye yaad rakh lo")
+  85          mm.save_conversation_permanent("ADA", "Theek hai sir, yaad rakh liya")
+  86          print("✅ Conversations saved:")
+  87:         print("   - User: MYRA ye yaad rakh lo")
+  88          print("   - ADA: Theek hai sir, yaad rakh liya")
+
+test_system_control.py:
+    2  """
+    3: Test script for MYRA System Control Agent
+    4  Tests all core functionality without requiring full backend running
+
+  240      print(f"\n{BLUE}{'*'*60}")
+  241:     print("  MYRA SYSTEM CONTROL - TEST SUITE")
+  242      print("  Version 1.0 | January 27, 2026")
+
+TESTING_ECHO_PROTECTION.md:
+    5  ### 1. Check Code Changes Installed
+    6: Before starting MYRA, verify the fixes are in place:
+    7  
+
+   35  **Steps**:
+   36: 1. Start MYRA
+   37: 2. Say: "Hello MYRA"
+   38  3. Wait for response
+
+   44  [ADA DEBUG] [ECHO PROTECTION] ADA spoke: 'Hello! I can...' at 1706234567.891
+   45: [SERVER DEBUG] User input received: 'Hello MYRA'
+   46: [SERVER DEBUG] Sending message to model: 'Hello MYRA'
+   47  [ADA DEBUG] [ECHO PROTECTION] ADA spoke: 'I can help you...' at 1706234568.123
+
+   67  **Steps**:
+   68: 1. Start MYRA
+   69  2. Let ADA say something (wait for complete response)
+
+   73  **Example**:
+   74: - MYRA: "I'm ready to help with CAD designs"
+   75  - You repeat: "I'm ready to help with CAD designs"
+
+   98  **Steps**:
+   99: 1. MYRA says: "The CAD model parameters are: width, height, depth"
+  100  2. You say: "width, height, depth" (just the subset)
+
+  120  **Steps**:
+  121: 1. MYRA says: "I UNDERSTAND"
+  122  2. You immediately repeat: "i understand" (lowercase)
+
+  142  **Steps**:
+  143: 1. MYRA says: "Ready to proceed"
+  144  2. Wait 3 seconds (longer than 2-second cooldown)
+
+  166  **Steps**:
+  167: 1. MYRA says: "How can I help?"
+  168  2. Immediately (within 2s) say: "Help me design a box" (different from what ADA said)
+
+  181  - ✅ Sent to model successfully
+  182: - ✅ MYRA responds normally
+  183  - ✅ No false rejection
+
+  190  |------------|---------|--------|
+  191: | `[ADA DEBUG] [ECHO PROTECTION] ADA spoke: '...'` | MYRA just finished speaking | Normal - tracking for echo |
+  192  | `[SERVER DEBUG] [ECHO PROTECTION] Cooldown active` | Echo window is active | Checking if message is echo |
+
+TESTING_ROLE_MAPPING.md:
+   56  ```
+   57: You speak: "Hello MYRA"
+   58    ↓
+   59: [ADA DEBUG] [ROLE VALIDATION] Emitting User: 'Hello MYRA'
+   60: [SERVER DEBUG] [ROLE VALIDATION] PASS: User → 'Hello MYRA'
+   61: [ROLE VALIDATION] Frontend PASS: User → "Hello MYRA"
+   62    ↓
+   63: Chat displays: User: "Hello MYRA"
+   64    ↓
+   65: MYRA responds: "Hello! How can I help?"
+   66    ↓
+
+   85  ### Setup:
+   86: 1. Enable audio (unmute MYRA)
+   87: 2. Let MYRA speak something
+   88  3. Microphone captures echo (without headphones)
+
+   91  ```
+   92: MYRA: "I can help you design"
+   93    ↓
+
+  109  - ✅ No duplicate message added to chat
+  110: - ✅ MYRA doesn't respond to its own speech
+  111  
+
+  137  - ✅ Chat shows User: correct message
+  138: - ✅ MYRA responds to the input
+  139  
+
+  165     - "User:" messages only from YOUR input
+  166:    - "ADA:" messages only from MYRA responses
+  167:    - NO "User:" messages that are actually MYRA's response
+  168     - NO "ADA:" messages that are actually YOUR input
+
+  253  ### Problem: Echo still happening
+  254: **Symptom**: MYRA responds to its own speech
+  255  
+
+TRUSTED_MODE_ARCHITECTURE.md:
+  169  ```
+  170: User: "MYRA, sirf chrome aur notepad allow karo"
+  171         │
+
+TRUSTED_MODE_IMPLEMENTATION_SUMMARY.md:
+   10  
+   11: A complete **Jarvis-style automation** system for MYRA that minimizes authorization popups while maintaining security. Trust decisions are **persistent** across application restarts.
+   12  
+
+  161  ```
+  162: Enable:              "MYRA, is system ko trust kar lo"
+  163: Disable:             "MYRA, popups mat dikhana" / "stop showing popups"
+  164: Set Apps:            "MYRA, sirf chrome aur notepad allow karo"
+  165: Remember Forever:    "MYRA, future me popup mat dikhana"
+  166  ```
+
+  482  ### For Users
+  483: 1. Say: "MYRA, is system ko trust kar lo" (or "enable trusted mode")
+  484: 2. Say: "MYRA, sirf chrome aur notepad allow karo" (or "allow chrome and notepad")
+  485: 3. Say: "MYRA, future me popup mat dikhana" (or "remember forever")
+  486  4. Now system control actions won't show popups!
+
+TRUSTED_MODE_QUICK_START.md:
+    8  
+    9: MYRA now works like **Siri/Jarvis** - it can:
+   10  - 🚀 Open apps instantly without asking
+
+   21  
+   22: **Say any of these to MYRA:**
+   23  
+   24  ```
+   25: "MYRA, is system ko trust kar lo"
+   26  ```
+
+   37  
+   38: **Tell MYRA which apps to trust:**
+   39  
+   40  ```
+   41: "MYRA, sirf chrome aur notepad allow karo"
+   42  ```
+
+   56  ```
+   57: "MYRA, future me popup mat dikhana"
+   58  ```
+
+   84  ```
+   85: "MYRA, disable trusted mode"
+   86  ```
+
+  153  
+  154: What MYRA does when you say "Open Chrome":
+  155  
+
+  185  rm backend/trusted_permissions.json
+  186: # Or just say: "MYRA, reset trusted mode"
+  187  ```
+
+  236  
+  237: **Ready?** Wake up MYRA and say:
+  238  
+  239: # "MYRA, is system ko trust kar lo" 🎤
+  240  
+
+TRUSTED_MODE_README.md:
+   10  
+   11: A complete **Jarvis-style automation system** for ADA V2/MYRA that enables:
+   12  
+
+   24  ```
+   25: "MYRA, is system ko trust kar lo"
+   26  or
+
+   31  ```
+   32: "MYRA, sirf chrome aur notepad allow karo"
+   33  or
+
+   38  ```
+   39: "MYRA, future me popup mat dikhana"
+   40  or
+
+  200  ```
+  201: Enable:              "MYRA, is system ko trust kar lo"
+  202: Disable:             "MYRA, popups mat dikhana"
+  203: Configure Apps:      "MYRA, sirf chrome aur notepad allow karo"
+  204: Persistent:          "MYRA, future me popup mat dikhana"
+  205  ```
+
+  321  User: "enable trusted mode"
+  322: MYRA: "Trusted Mode enabled."
+  323  
+  324  User: "allow chrome and vscode"
+  325: MYRA: "I'll trust chrome and vscode."
+  326  
+  327  User: "remember forever"
+  328: MYRA: "I'll remember your decisions."
+  329  
+
+  336  User: "allow chrome, notepad, and calculator"
+  337: MYRA: "Added 3 apps to trusted list."
+  338  
+
+  351  User: "disable trusted mode"
+  352: MYRA: "Trusted mode disabled."
+  353  
+
+  355  
+  356: User: "MYRA, reset trusted mode"
+  357  → Deletes trusted_permissions.json
+
+  502  
+  503: **Trusted System Control Mode** is a production-ready feature that transforms MYRA into a Jarvis-like assistant. It intelligently skips authorization popups for trusted actions while maintaining rock-solid security for dangerous operations.
+  504  
+
+TRUSTED_SYSTEM_CONTROL_GUIDE.md:
+    1  # TRUSTED SYSTEM CONTROL MODE - Implementation Guide
+    2: **MYRA Jarvis-Style Automation with Minimal Popups**
+    3  
+
+    5  
+    6: Trusted System Control Mode enables MYRA to execute system automation tasks (opening apps, controlling volume, etc.) with **minimal authorization popups**, functioning like Siri or Jarvis while maintaining security. Trust decisions are **persistent** across restarts.
+    7  
+
+   39  |---------|--------|
+   40: | "MYRA, is system ko trust kar lo" | Enable trusted mode |
+   41  | "enable trusted mode" | Enable trusted mode |
+   42: | "MYRA, future me popup mat dikhana" | Set remember_forever=true |
+   43  | "remember forever" | Set remember_forever=true |
+   44: | "MYRA, sirf chrome aur notepad allow karo" | Set allowed_apps=["chrome", "notepad"] |
+   45  | "allow chrome and notepad" | Set allowed_apps=["chrome", "notepad"] |
+
+  104  ```
+  105: "MYRA, is system ko trust kar lo"
+  106  or
+
+  112  ```
+  113: "MYRA, sirf chrome aur notepad allow karo"
+  114  or
+
+  122  ```
+  123: "MYRA, future me popup mat dikhana"
+  124  or
+
+  130  ```
+  131: "MYRA, stop showing popups"
+  132  or
+
+  269  - Trust settings are **persistent across restarts** if `remember_forever=true`
+  270: - Users can disable at any time: "MYRA, disable trusted mode"
+  271  
+
+  327  ```
+  328: 1. User: "MYRA, is system ko trust kar lo"
+  329  2. Expected: Trusted mode enabled, config updated
+
+WEBAGENT_DEPLOYMENT_READY.txt:
+  1  ╔════════════════════════════════════════════════════════════════════════════╗
+  2: ║                    MYRA V2 - WEBAGENT FIX COMPLETE                          ║
+  3  ║                         PRODUCTION READY ✅                                 ║
+
+WEBAGENT_FINAL_REPORT.md:
+    1  ================================================================================
+    2:                     MYRA V2 - WEBAGENT FIX FINAL REPORT
+    3  ================================================================================
+    4  
+    5: PROJECT: MYRA AI - Iron Man Mode (Windows 10/11)
+    6  ISSUE: Web Agent Error: 'WebAgent' object has no attribute 'run'
+
+  408  
+  409: Project:      MYRA V2 - WebAgent Fix
+  410  Status:       ✅ COMPLETE
+
+WHATSAPP_CALLS_FEATURE.md:
+    1: # WhatsApp Video & Voice Call Features for MYRA
+    2  
+
+    4  
+    5: WhatsApp video call and voice call features are **now permanently integrated** into MYRA. You can use voice commands to initiate calls with any WhatsApp contact.
+    6  
+
+    8  
+    9: ### Via Voice Command (Electron/MYRA)
+   10: When you have MYRA running in Electron, simply say:
+   11  
+
+   23  
+   24: MYRA will:
+   25  1. Automatically open WhatsApp Desktop
+
+   34  ```
+   35: Voice Command → MYRA (ada.py)
+   36      ↓
+
+  146  ```
+  147: "Hey MYRA, video call papa"
+  148: → MYRA: "Initiating video call with papa"
+  149  → WhatsApp opens and calls papa on video
+
+  159  ```
+  160: "Hey MYRA, voice call papa"
+  161: → MYRA: "Initiating voice call with papa"
+  162  → WhatsApp opens and calls papa with voice
+
+WHATSAPP_FEATURE.md:
+   1: # WhatsApp Messaging Feature for MYRA
+   2  
+
+   4  
+   5: The WhatsApp messaging feature is now **permanently integrated** into MYRA. You can now use voice commands to send messages directly to any WhatsApp contact.
+   6  
+
+   8  
+   9: ### Via Voice Command (Electron/MYRA)
+  10: When you have MYRA running in Electron, simply say:
+  11  
+
+  16  
+  17: MYRA will:
+  18  - Automatically open WhatsApp Desktop
+
+  25  1. **Trigger**: You say a message with a contact name
+  26: 2. **Processing**: MYRA recognizes the `whatsapp_control` tool request
+  27  3. **Execution**: The WhatsApp agent takes over:
+
+  32     - Sends with Enter key
+  33: 4. **Confirmation**: MYRA tells you the message was sent
+  34  
+
+  73  ```
+  74: Voice Command → MYRA (ada.py)
+  75      ↓
+
+  90  - Desktop app must be able to be launched via `whatsapp://` URI
+  91: - MYRA must have focus/window focus for automation
+  92  
+
+  96  ```bash
+  97: python backend/test_MYRA_whatsapp.py
+  98  ```
+
+WHATSAPP_MESSAGE_FIX.md:
+  63  1. In Electron, say: **"WhatsApp [contact name] [message]"** or **"Message [contact] saying [message]"**
+  64: 2. MYRA will:
+  65     - Recognize the command
+
+  80  4. ✅ **Actually sends the message** (using Ctrl+Enter)
+  81: 5. ✅ MYRA responds: **"Sir, bej diya h"** (Sir, message sent)
+  82  
+
+backend\ada.py:
+  224      "name": "screen_read",
+  225:     "description": "Capture camera view and describe what MYRA sees. This allows her to understand the environment, detect people, objects, and provide verbal descriptions.",
+  226      "parameters": {
+
+  244      input_audio_transcription={},
+  245:     system_instruction="Your name is MYRA, OR mujhe Ayush kashyap ne banaya h jo ek tech creter h . "
+  246          "You have a witty and charming personality. "
+
+backend\demo_MYRA_whatsapp.py:
+   2  """
+   3: Complete WhatsApp Feature Demo for MYRA
+   4  Shows all available WhatsApp commands
+
+   7  print("="*60)
+   8: print("MYRA WhatsApp Features - Complete Integration")
+   9  print("="*60)
+
+  54  print("""
+  55: 1. Start Electron/MYRA: npm run dev (in project root)
+  56: 2. Say any WhatsApp command to MYRA
+  57: 3. MYRA will process your request and:
+  58     - Open WhatsApp Desktop
+
+  64    You: "Send message to papa: hello how are you"
+  65:   MYRA: "Message sent to papa: hello how are you"
+  66    
+  67    You: "Video call mama"
+  68:   MYRA: "Video call initiated with mama"
+  69    
+  70    You: "Voice call brother"
+  71:   MYRA: "Voice call initiated with brother"
+  72  """)
+
+  83      print("✓ WhatsApp agent loaded successfully")
+  84:     print("✓ Ready for voice commands via MYRA")
+  85  except Exception as e:
+
+backend\IRON_MAN_ARCHITECTURE.md:
+  1: # MYRA IRON MAN MODE - TECHNICAL ARCHITECTURE
+  2  
+
+backend\IRON_MAN_INDEX.md:
+    1: # MYRA AI - IRON MAN MODE (JARVIS-LEVEL)
+    2  ## Complete Implementation Index
+
+  402  
+  403: **MYRA AI - Iron Man Mode Ready for Deployment** 🚀
+
+backend\IRON_MAN_QUICK_REFERENCE.md:
+    1: # MYRA IRON MAN MODE - QUICK REFERENCE
+    2  
+
+  290  
+  291: result = router.route_command("MYRA STOP ALL CONTROL IMMEDIATELY")
+  292  # Returns: {'success': True, 'action': 'emergency_stop', 'message': '...'}
+
+backend\IRON_MAN_SETUP.md:
+  1: # MYRA AI - Iron Man Mode Setup
+  2  
+
+backend\launch_whatsapp_like_electron.py:
+  3  
+  4: # Use the exact same AppID that Electron/MYRA uses for WhatsApp
+  5  appid = "5319275A.WhatsAppDesktop_cv1g1gvanyjgm!WhatsApp"
+
+backend\memory_initializer.py:
+   55              print("[MEMORY] First time user - no permanent memory found")
+   56:             startup_info["greeting"] = "Namaste! Main aapka AI assistant MYRA hoon. Aapka naam kya hai?"
+   57          
+
+  236          
+  237:         return f"""You are MYRA, a helpful AI assistant. Here is context about the user:
+  238  
+
+backend\memory_integration.py:
+    1  """
+    2: Memory Integration Examples - Shows how to use permanent memory with MYRA
+    3  Demonstrates voice input handling, preference detection, and context usage
+
+   23          """
+   24:         Handle: "MYRA ye yaad rakh lo", "MYRA mujhe yaad rakho", "Remember this"
+   25          """
+
+  190          startup_info = self.memory_init.initialize_on_startup()
+  191:         return startup_info.get("greeting", "Namaste! Main MYRA hoon.")
+  192      
+
+  272      print("\n=== EXAMPLE 2: MEMORY SAVE REQUEST ===")
+  273:     response = integration.handle_memory_save_request("MYRA, mujhe ye yaad rakh lo: Maine kal CNC machine order kar diya")
+  274:     print(f"User: MYRA, mujhe ye yaad rakh lo: Maine kal CNC machine order kar diya")
+  275:     print(f"MYRA: {response}")
+  276      
+
+  279      print(f"User: Mujhe lofi music bahut pasand hai")
+  280:     print(f"MYRA: {response}")
+  281      
+
+  283      response = integration.handle_habit_learning("sleep_time", {"time": "1:30 AM", "quality": "good"})
+  284:     print(f"MYRA: {response}")
+  285      
+
+  288      print(f"User: Main bahut tired hoon")
+  289:     print(f"MYRA: {response}")
+  290      
+
+backend\memory_manager.py:
+  328      def on_memory_save_request(self, text: str, context: str = "voice_request") -> None:
+  329:         """Triggered when user says 'MYRA ye yaad rakh lo'"""
+  330          fact = self.add_fact(text)  # Save to facts
+
+backend\server.py:
+   182  async def status():
+   183:     return {"status": "running", "service": "MYRA Backend"}
+   184  
+
+   187      print(f"Client connected: {sid}")
+   188:     await sio.emit('status', {'msg': 'Connected to MYRA Backend'}, room=sid)
+   189  
+
+   259               print("Audio loop already running. Re-connecting client to session.")
+   260:              await sio.emit('status', {'msg': 'MYRA Already Running'})
+   261               return
+
+   410          
+   411:         print("Emitting 'MYRA Started'")
+   412:         await sio.emit('status', {'msg': 'MYRA Started'})
+   413  
+
+   476          audio_loop = None
+   477:         await sio.emit('status', {'msg': 'MYRA Stopped'})
+   478  
+
+   863              await sio.emit('printer_list', [])
+   864:             await sio.emit('status', {'msg': "Connect to MYRA to enable printer discovery"})
+   865              return
+
+  1089                  'user_identified': False,
+  1090:                 'greeting': "Namaste! Main aapka AI assistant MYRA hoon.",
+  1091                  'error': str(e)
+
+  1095              'user_identified': False,
+  1096:             'greeting': "Namaste! Main aapka AI assistant MYRA hoon.",
+  1097              'error': "Memory system not initialized"
+
+backend\system_agent.py:
+  1  """
+  2: System Control Agent for MYRA Desktop Access
+  3  Provides controlled Windows desktop automation with safety checks.
+
+backend\test_media_automation.py:
+  7  print("="*60)
+  8: print("TESTING MYRA TRUSTED MEDIA AUTOMATION")
+  9  print("="*60)
+
+backend\test_media_simple.py:
+  8  print("="*60)
+  9: print("TESTING MYRA TRUSTED MEDIA AUTOMATION")
+  10  print("="*60)
+
+backend\test_trusted_permissions.py:
+  117      mgr.enable_trusted_mode()
+  118:     result = VoiceIntentParser.parse_trusted_intent("MYRA, sirf chrome aur notepad allow karo", mgr)
+  119      assert result["success"] == True, "Should parse Hindi intent"
+
+backend\test_video_call.py:
+  18      print("\n✅ VIDEO CALL WORKING!")
+  19:     print("   You can now say to MYRA:")
+  20      print("   - 'Video call papa'")
+
+backend\test_MYRA_whatsapp.py:
+   3  Test WhatsApp messaging feature end-to-end
+   4: This simulates what happens when you tell MYRA to send a message
+   5  """
+
+   8  
+   9: print("=== WhatsApp Feature Test (via MYRA) ===\n")
+  10  
+
+  25      print("\n✅ FEATURE WORKING!")
+  26:     print("   You can now say to MYRA:")
+  27      print("   - 'Send message to papa: hello'")
+
+backend\verify_whatsapp_fix.py:
+  25  
+  26: result = agent.send_message('papa', 'hello test from MYRA')
+  27  
+
+  36      print('  or "Send message to papa: hello"')
+  37:     print("\nMYRA will:")
+  38      print("  1. Call whatsapp_control tool (NOT just say it)")
+
+backend\voice_intent_parser.py:
+  20          Supported intents:
+  21:         - "MYRA, is system ko trust kar lo" / "enable trusted mode" → Enable trusted mode
+  22:         - "MYRA, future me popup mat dikhana" / "remember forever" → Set remember_forever
+  23:         - "MYRA, sirf chrome aur notepad allow karo" / "allow chrome and notepad" → Set allowed apps
+  24:         - "MYRA, stop showing popups" / "disable trusted mode" → Disable trusted mode
+  25          
+
+  40              "jarvis mode",
+  41:             "MYRA ko trust kar",
+  42              "trust mode on"
+
+backend\whatsapp_agent.py:
+  1  """
+  2: WhatsApp Agent for MYRA
+  3  Handles WhatsApp messaging and video calls automation using Desktop app
+
+backend\WINDOWS_DEPLOYMENT_GUIDE.md:
+    1: # MYRA IRON MAN MODE - WINDOWS DEPLOYMENT GUIDE
+    2  
+
+  501  # Create logger
+  502: logger = logging.getLogger('MYRA')
+  503  logger.setLevel(logging.DEBUG)
+
+  505  # File handler
+  506: fh = logging.FileHandler('MYRA.log')
+  507  fh.setLevel(logging.DEBUG)
+
+  523  # Use
+  524: logger.info("Starting MYRA")
+  525  logger.debug("Controller initialized")
+
+  694  
+  695: **MYRA Iron Man Mode - Ready for Windows Deployment!** 🚀
+
+backend\emotion\response_adapter.py:
+    2  Response Style Adapter
+    3: Adapts MYRA's response style based on detected emotion.
+    4  """
+
+  233          Args:
+  234:             base_system_prompt: Original system prompt for MYRA
+  235              emotion_state: Current emotion state
+
+memory\permanent_memory.json:
+  54        "sender": "User",
+  55:       "text": "MYRA ye yaad rakh lo",
+  56        "context": "",
+
+src\App.jsx:
+   337              // Update status bar based on backend messages
+   338:             if (data.msg === 'MYRA Started') {
+   339                  setStatus('Model Connected');
+   340:             } else if (data.msg === 'MYRA Stopped') {
+   341                  setStatus('Connected');
+
+   461                  // Display screenshot
+   462:                 addMessage('System', '📸 Screenshot captured by MYRA');
+   463                  // You can create a new window component or modal to display the screenshot
+
+  1513                      <h1 className="text-xl font-bold tracking-[0.2em] text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
+  1514:                         MYRA
+  1515                      </h1>
+
+src\components\CameraVisionModule.jsx:
+  235          <span className="camera-icon">🎥</span>
+  236:         <span>MYRA's Camera Vision</span>
+  237        </div>
+
+src\components\ConfirmationPopup.jsx:
+  67                              <p className="text-orange-200 leading-relaxed text-sm font-semibold">
+  68:                                 MYRA wants to {systemDescription}
+  69                              </p>
+
+src\components\Visualizer.jsx:
+  95                  >
+  96:                     MYRA
+  97                  </motion.div>

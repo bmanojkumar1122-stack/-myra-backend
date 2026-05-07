@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MYRA Mobile Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>MYRA Backend Test</h1>
+    <div id="status">Testing connection...</div>
+    <button onclick="testConnection()">Test</button>
+    
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://10.22.76.121:8000');
+        
+        socket.on('connect', () => {
+            document.getElementById('status').innerHTML = '✅ Connected to MYRA!';
+            document.getElementById('status').style.color = 'green';
+        });
+        
+        socket.on('connect_error', () => {
+            document.getElementById('status').innerHTML = '❌ Cannot connect';
+            document.getElementById('status').style.color = 'red';
+        });
+        
+        function testConnection() {
+            socket.emit('get_settings');
+        }
+    </script>
+</body>
+</html>
