@@ -1348,39 +1348,67 @@ if __name__ == "__main__":
 # ========== WEB SOCKET FOR ANDROID MYRA AI ==========
 from fastapi import WebSocket, WebSocketDisconnect
 import json
+import base64
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
+
     await websocket.accept()
     print("✅ Android Myra AI connected!")
-    
+
     try:
+
         await websocket.send_text(json.dumps({
             "type": "welcome",
             "content": "Hello! I'm Myra AI from ADA V2. How can I help you?"
         }))
-        
+
         while True:
+
             data = await websocket.receive_text()
             print(f"📝 From Android: {data}")
-            
-            # Simple AI response
+
             text_lower = data.lower()
+
             if "hello" in text_lower or "hi" in text_lower:
                 response = "Hello! Namaste! How are you?"
+
             elif "how are you" in text_lower:
                 response = "I'm doing great! Thanks for asking!"
+
             elif "name" in text_lower:
                 response = "I'm Myra AI, your voice assistant from ADA V2!"
+
             elif "bye" in text_lower:
                 response = "Goodbye! Have a great day!"
+
             else:
-                response = f"Myra AI received: \"{data}\""
-            
+                response = f"Myra AI received: {data}"
+
+            # ========= LOAD KORE VOICE =========
+            audio_base64 = ""
+
+            try:
+
+                with open("myra_voice.wav", "rb") as audio_file:
+
+                    audio_base64 = base64.b64encode(
+                        audio_file.read()
+                    ).decode("utf-8")
+
+            except Exception as e:
+
+                print(f"❌ Audio error: {e}")
+
+            # ========= SEND TO ANDROID =========
             await websocket.send_text(json.dumps({
+
                 "type": "response",
-                "content": response
+                "content": response,
+                "audio": audio_base64
+
             }))
-            
+
     except WebSocketDisconnect:
+
         print("🔴 Android disconnected")
