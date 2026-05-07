@@ -48,11 +48,6 @@ async def websocket_endpoint(websocket: WebSocket):
     print(f"✅ Mobile client {client_id} connected")
     
     try:
-        await websocket.send_text(json.dumps({
-            "type": "welcome",
-            "content": "Hello! I'm Myra AI. How can I help you?",
-            "timestamp": datetime.now().isoformat()
-        }))
         
         while True:
             data = await websocket.receive_text()
