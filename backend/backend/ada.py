@@ -16,6 +16,17 @@ import time
 
 from google import genai
 from google.genai import types
+from pydub import AudioSegment
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+VOICE_FILE = os.path.join(
+    BASE_DIR,
+    "kore_voice.mp3"
+)
+
+print("VOICE EXISTS:", os.path.exists(VOICE_FILE))
+print("VOICE PATH:", VOICE_FILE)
 
 if sys.version_info < (3, 11, 0):
     try:
